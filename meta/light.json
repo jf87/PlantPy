@@ -1,0 +1,25 @@
+{
+    "Metadata": {
+        "Extra": {
+            "Type": "Light"
+        },
+        "Instrument": {
+            "Manufacturer": "LoPy",
+            "Model": "Chirp"
+        },
+        "Location": {
+            "Building": "Jonathans Home",
+            "City": "Copenhagen",
+            "Coordinates": ""
+        },
+        "SourceName": "Instrumentation_Test",
+        "System": "Lora"
+    },
+    "Path": "/Jonathan/Home/Kitchen/LoPy/Chirp/Light",
+    "Properties": {
+        "Timezone": "Europe/Copenhagen",
+        "UnitofMeasure": "Percentage"
+    },
+    "Readings": [],
+    "uuid": "6da5bf66-ec5c-4812-86f2-502f609eb85e"
+}

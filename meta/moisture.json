@@ -1,0 +1,25 @@
+{
+    "Metadata": {
+        "Extra": {
+            "Type": "Moisture"
+        },
+        "Instrument": {
+            "Manufacturer": "LoPy",
+            "Model": "Chirp"
+        },
+        "Location": {
+            "Building": "Jonathans Home",
+            "City": "Copenhagen",
+            "Coordinates": ""
+        },
+        "SourceName": "Instrumentation_Test",
+        "System": "Lora"
+    },
+    "Path": "/Jonathan/Home/Kitchen/LoPy/Chirp/Moisture",
+    "Properties": {
+        "Timezone": "Europe/Copenhagen",
+        "UnitofMeasure": "Moisture"
+    },
+    "Readings": [],
+    "uuid": "48ef2e49-56a5-513e-8351-25af9fae5ae6"
+}

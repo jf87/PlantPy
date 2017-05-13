@@ -1,0 +1,25 @@
+{
+    "Metadata": {
+        "Instrument": {
+            "Manufacturer": "LoPy",
+            "Model": "Chirp"
+        },
+        "Location": {
+            "Building": "Jonathan's Home",
+            "City": "Copenhagen",
+            "Coordinates": ""
+        },
+        "Extra": {
+            "Type" : "Temperature"
+        },
+        "SourceName": "Instrumentation_Test",
+        "System": "Lora"
+    },
+    "Path": "/Jonathan/Home/Kitchen/LoPy/Chirp/Temperature",
+    "Properties": {
+        "Timezone": "Europe/Copenhagen",
+        "UnitofMeasure": "C"
+    },
+    "Readings": [],
+    "uuid": "38ef2e49-56a5-533e-8351-65ae9fee5ae6"
+}
