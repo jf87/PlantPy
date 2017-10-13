@@ -1,4 +1,5 @@
 from machine import UART
+from machine import Pin
 import os
 from network import WLAN
 import config as C
@@ -6,6 +7,8 @@ import config as C
 
 uart = UART(0, 115200)
 os.dupterm(uart)
+pin = Pin("P19", Pin.OUT)
+pin.value(0)
 
 wlan = WLAN(mode=WLAN.STA)
 wlan.scan()

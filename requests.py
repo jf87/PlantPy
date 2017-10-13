@@ -2,7 +2,7 @@ import usocket
 
 
 # https://github.com/lucien2k/wipy-urllib
-class Requests():
+class Requests:
     def __init__(self, method, url, data=None, headers={}, stream=None):
         self.method = method
         self.url = url

@@ -1,0 +1,27 @@
+# ifdefs
+BLE_ENABLED = False
+LORAWAN_ENABLED = False
+HEARTBEAT_LED_ENABLED = True
+SLEEP_ENABLED = False
+
+# led colors
+LED_OFF = 0x000000
+LED_RED = 0xff0000
+LED_GREEN = 0x00ff00
+LED_BLUE = 0x0000ff
+
+# wifi
+SSID = 'YOUR-SSID'
+KEY = 'PASSWORD'
+
+# backend
+URL = 'http://130.226.142.195:8079/add'
+HEADERS = {'Authorization':
+           'Basic XXXXX'}
+POST_INTERVAL = 10
+
+
+# devices
+SAMPLING_INTERVAL = 60
+CHIRP_ADDRESS = 32
+PUMP_PIN = 'P19'

@@ -3,13 +3,13 @@ import machine
 import time
 from network import LoRa
 from network import Bluetooth
-from devices.chirp import Chirp
-from devices.pump import Pump
-from requests import Requests
+from dev.chirp import Chirp
+from dev.pump import Pump
+import config as C
+import requests as R
 import utime
 import ujson
 import os
-import config as C
 
 
 def setup_leds():
@@ -62,10 +62,27 @@ def post_data(meta):
         if len(m["Readings"]) > 0:
             s = {m["Path"]: m}
             body = ujson.dumps(s)
-            r = Requests("POST", C.URL, data=body, headers=C.HEADERS)
-            r.makeRequest()
-            print(r.response.status_code)
-            if (r.response.status_code) == 200:
+            r = R.Requests("POST", C.URL, data=body, headers=C.HEADERS)
+            try:
+                r.makeRequest()
+            except:
+                pass
+            # print(r.status_code)
+            # if (r.status_code) == 200:
+            m["Readings"] = []
+            # else:
+            #     print("POST not successful")
+    return meta
+
+
+def post_data_fake(meta):
+    for m in meta:
+        print("post")
+        print(m)
+        if len(m["Readings"]) > 0:
+            s = {m["Path"]: m}
+            body = ujson.dumps(s)
+            if  True:
                 m["Readings"] = []
             else:
                 print("POST not successful")
@@ -80,21 +97,25 @@ def actuate(meta, pump):
     s_off = 0
     for m in meta:
         if m["Metadata"]["Extra"]["Type"] == "Moisture":
+            print(m)
             l = len(m["Readings"])
+            print(l)
             if l > 0:
                 s = 0
                 for r in m["Readings"]:
                     s = s + r[1]
                 avg = s/l
+                print(avg)
                 # FIXME is this a good value? does it change over time?
-                if avg < 380:
+                if avg < 400:
                     t_on = int(utime.time())*1000
-                    s_on = pump.state
                     pump.on()
-                    time.sleep_ms(500)
+                    s_on = pump.state
+                    time.sleep_ms(1000)
                     pump.off()
                     s_off = pump.state
                     t_off = int(utime.time())*1000
+                    actuated = True
     if actuated:  # FIXME not very nice
         for m in meta:
             if m["Metadata"]["Extra"]["Type"] == "Pump":
@@ -104,6 +125,7 @@ def actuate(meta, pump):
 
 
 if __name__ == "__main__":
+    p = Pump(C.PUMP_PIN)
     setup_leds()
     setup_ble()
     setup_lora()
@@ -111,7 +133,6 @@ if __name__ == "__main__":
     setup_time(3600)  # from UTC to CET
     meta = setup_meta("./meta")  # one time metasetup
     c = Chirp(C.CHIRP_ADDRESS)
-    p = Pump(C.PUMP_PIN)
     while True:
         for i in range(0, C.POST_INTERVAL):
             for m in meta:
